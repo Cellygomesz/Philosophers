@@ -6,7 +6,7 @@
 #    By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/12 10:52:11 by mgomes-s          #+#    #+#              #
-#    Updated: 2025/03/12 10:52:58 by mgomes-s         ###   ########.fr        #
+#    Updated: 2025/03/13 15:30:52 by mgomes-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,23 +16,23 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -pthread
 
-SRCS = main.c
+SRCS = main.c aux.c
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@ $(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@ $(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	@ $(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@ rm -f $(NAME)
 
 re: fclean all
 

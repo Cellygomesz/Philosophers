@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:22:00 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/03/12 15:59:07 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:29:51 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PHILO_H
 
 # include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 typedef struct s_philo
 {
@@ -24,5 +26,8 @@ typedef struct s_philo
 	int	philo_must_eat;
 
 } t_philo;
+
+int	ft_atoi(const char *nptr);
+int	error(int fd);
 
 #endif
