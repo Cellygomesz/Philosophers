@@ -27,7 +27,8 @@ typedef struct s_philo
 
 } t_philo;
 
-int	ft_atoi(const char *nptr);
+int	ft_atoi(char *nptr);
 int	error(int fd);
+int	is_num(char *str);
 
 #endif

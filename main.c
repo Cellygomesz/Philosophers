@@ -12,8 +12,6 @@
 
 #include "philo.h"
 
-// tratar "./philo 1 2 4 5+ 6" esse tipo de coisa
-
 int	main(int ac, char **av)
 {
 	t_philo	*p;
@@ -24,17 +22,19 @@ int	main(int ac, char **av)
 		error(2);
 		exit(0);
 	}
-	p->philosophers = ft_atoi(av[1]);
-	p->time_die = ft_atoi(av[2]);
-	p->time_eat = ft_atoi(av[3]);
-	p->time_sleep = ft_atoi(av[4]);
-	p->philo_must_eat = ft_atoi(av[5]);
+	p->philosophers = is_num(av[1]);
+	p->time_die = is_num(av[2]);
+	p->time_eat = is_num(av[3]);
+	p->time_sleep = is_num(av[4]);
+	p->philo_must_eat = is_num(av[5]);
 
+	/*
 	printf("1: %d\n", p->philosophers);
 	printf("2: %d\n", p->time_die);
 	printf("3: %d\n", p->time_eat);
 	printf("4: %d\n", p->time_sleep);
 	printf("5: %d\n", p->philo_must_eat);
+*/
 
 	free(p);
 	return (0);

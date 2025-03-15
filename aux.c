@@ -18,7 +18,7 @@ int	error(int fd)
 	return (1);
 }
 
-int	ft_atoi(const char *c)
+int	ft_atoi(char *c)
 {
 	int	i;
 	int	neg;
@@ -27,17 +27,6 @@ int	ft_atoi(const char *c)
 	i = 0;
 	neg = 1;
 	temp = 0;
-	while (c[i])
-	{
-		// fazer a verificação de sinais ainda @#$% espaco e tab tbmmmmm !!!!
-		if ((c[i] >= 'a' && c[i] <= 'z') || (c[i] >= 'A' && c[i] <= 'Z'))
-		{
-			error(2);
-			exit(0);
-		}
-		i++;
-	}
-	i = 0;
 	while (c[i] == ' ' || (c[i] >= 9 && c[i] <= 13))
 		i++;
 	if (c[i] == '+' || c[i] == '-')
@@ -52,4 +41,21 @@ int	ft_atoi(const char *c)
 		i++;
 	}
 	return (temp * neg);
+}
+
+int	is_num(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+		{
+			error(2);
+			exit(0);
+		}
+		i++;
+	}
+	return (ft_atoi(str));
 }
