@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:00:43 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/03/13 16:01:28 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:26:17 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,25 @@
 int	error(int fd)
 {
 	write(fd, "Error\n", 6);
+	// dar free
+	exit(0);
 	return (1);
+}
+
+int	valid_inputs(char *av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		if (!(av[i] >= '0' && av[i] <= '9'))
+		{
+			error(2);
+		}
+		i++;
+	}
+	return (ft_atoi(av));
 }
 
 int	ft_atoi(char *c)
@@ -43,19 +61,3 @@ int	ft_atoi(char *c)
 	return (temp * neg);
 }
 
-int	is_num(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
-		{
-			error(2);
-			exit(0);
-		}
-		i++;
-	}
-	return (ft_atoi(str));
-}

@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:22:00 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/03/21 02:41:35 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:00:55 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ typedef struct s_philosopher
 
 int	ft_atoi(char *nptr);
 int	error(int fd);
-int	is_num(char *str);
+int	valid_inputs(char *av);
 
 #endif
