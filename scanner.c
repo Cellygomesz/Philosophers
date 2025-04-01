@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 07:15:42 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 07:46:52 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 08:15:52 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	scan(t_table *table)
 		{
 			pthread_mutex_lock(&table->dead);
 			table->died = 1;
+			pthread_mutex_unlock(&table->dead);
 			print_death(table->ph[i]);
 			pthread_mutex_unlock(&table->l_meal);
 			break ;
@@ -50,6 +51,5 @@ int	scan(t_table *table)
 		i = (i + 1) % table->n_philo;
 		usleep(200);
 	}
-	pthread_mutex_unlock(&table->dead);
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 05:11:28 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 08:08:46 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 08:20:24 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*dinner(void *t)
 	while (DINNER)
 	{
 		if (ph->ate == ph->table->m_eat)
-			break ;
+			return (NULL) ;
 		pthread_mutex_lock(&ph->table->dead);
 		if (ph->table->died == 1)
 			break ;
