@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 05:19:07 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 07:30:50 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 10:01:06 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ int	format_error(void)
 	"[number_of_times_each_philosopher_must_eat]\n");
 	return (FALSE);
 }
-

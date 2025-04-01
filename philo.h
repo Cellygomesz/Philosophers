@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:22:00 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 08:01:44 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 10:00:00 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		monitor(t_table *ph);
 
 // SCAN FUNCTIONS //
 
-int	scan(t_table *table);
+int		scan(t_table *table);
 
 // MUTEX FUNCTIONS //
 
@@ -115,5 +115,5 @@ void	eat(t_philo *ph);
 void	think(t_philo *ph);
 void	take_fork(t_philo *ph);
 void	check_menu(t_philo *ph);
-#endif
 
+#endif
