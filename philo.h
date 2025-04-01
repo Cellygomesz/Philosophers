@@ -6,40 +6,114 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:22:00 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/03/31 15:42:46 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 08:01:44 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include <unistd.h>
 # include <stdio.h>
+# include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
+# include <sys/time.h>
 # include <pthread.h>
 
-typedef struct s_rules {
-    int	num_philos;         // Número total de filósofos
-    int	time_to_die;        // Tempo máximo que um filósofo pode ficar sem comer antes de morrer (ms)
-    int	time_to_eat;        // Tempo que um filósofo leva para comer (ms)
-    int	time_to_sleep;      // Tempo que um filósofo leva para dormir (ms)
-    pthread_mutex_t	*forks; // Array de mutexes representando os garfos
-    pthread_mutex_t	write_mutex; // Mutex para evitar condições de corrida na impressão
-    int	someone_died;       // Flag para indicar se um filósofo morreu (1 = morreu, 0 = continua)
-} t_rules;
+# define TRUE 1
+# define FALSE 0
+# define DINNER 42
+# define EAT 90
+# define THINK 91
+# define DREAMS 92
+# define DEAD 93
+# define FORK 94
 
-typedef struct s_philo {
-    int	id;                // ID do filósofo (vai de 0 a num_philos - 1)
-    long	last_meal_time;   // Timestamp da última refeição do filósofo (usado para monitorar a fome)
-    int	meals_eaten;       // Contador de quantas vezes o filósofo já comeu
-    pthread_mutex_t	*left_fork;  // Ponteiro para o mutex do garfo à esquerda
-    pthread_mutex_t	*right_fork; // Ponteiro para o mutex do garfo à direita
-    pthread_mutex_t	meal_mutex;  // Mutex para proteger o acesso ao tempo da última refeição
-    t_rules	*rules;        // Ponteiro para acessar as regras e configurações globais do programa
-} t_philo;
+typedef struct s_table	t_table;
+typedef struct s_philo	t_philo;
+typedef pthread_mutex_t	t_mutex;
 
-int	ft_atoi(char *nptr);
-int	error(int fd);
-int	valid_inputs(char *av);
+typedef struct s_philo
+{
+	int				index;
+	int				id;
+	long			last_meal;
+	int				r_fork;
+	int				l_fork;
+	int				ate;
+	pthread_t		philo;
+	t_table			*table;
+}	t_philo;
 
+typedef struct s_table
+{
+	t_mutex		*m_fork;
+	t_mutex		creed;
+	t_mutex		print;
+	t_mutex		l_meal;
+	t_mutex		dead;
+
+	int			died;
+	int			m_eat;
+	int			n_philo;
+	long		start_clock;
+	long		time_eat;
+	long		time_die;
+	long		time_dream;
+	pthread_t	scanner;
+	t_philo		*ph;
+}	t_table;
+
+// UTILS FUNCTIONS //
+
+int		ft_isdigit(char c);
+long	get_milli_time(void);
+long	time_now(t_philo *ph);
+long	ft_atol(const char *str);
+void	smart_sleep(long duration, t_philo *ph);
+void	print(int action, t_philo *ph);
+void	print_death(t_philo ph);
+
+// ERROR FUNCTIONS //
+
+int		time_philo_meat_error(void);
+int		digit_error(int position);
+int		signal_error(int position);
+int		format_error(void);
+
+// VALIDATES FUNCTIONS //
+
+int		valid_input(int ac, char **av);
+int		time_check(t_table *table);
+int		str_isdigit(char *str);
+
+// INIT FUNCTIONS //
+
+int		init(t_table *table, int ac, char **av);
+void	init_philo(t_table *table, int t_philo);
+void	finish_philo(t_table *table, int t_philo);
+void	create_fork(t_table *table);
+
+// MONITOR FUNCTIONS //
+
+int		monitor(t_table *ph);
+
+// SCAN FUNCTIONS //
+
+int	scan(t_table *table);
+
+// MUTEX FUNCTIONS //
+
+void	destroy_mutex(t_table *table);
+
+// DINNER FUNCTIONS //
+
+void	one_dinner(t_philo *ph);
+void	*dinner(void *ph);
+void	dreams(t_philo *ph);
+void	eat(t_philo *ph);
+void	think(t_philo *ph);
+void	take_fork(t_philo *ph);
+void	check_menu(t_philo *ph);
 #endif
+
