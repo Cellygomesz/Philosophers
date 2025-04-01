@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:22:00 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 10:00:00 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:16:36 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ typedef struct s_philo
 typedef struct s_table
 {
 	t_mutex		*m_fork;
-	t_mutex		creed;
 	t_mutex		print;
 	t_mutex		l_meal;
+	t_mutex		food;
 	t_mutex		dead;
 
 	int			died;
@@ -94,10 +94,6 @@ void	init_philo(t_table *table, int t_philo);
 void	finish_philo(t_table *table, int t_philo);
 void	create_fork(t_table *table);
 
-// MONITOR FUNCTIONS //
-
-int		monitor(t_table *ph);
-
 // SCAN FUNCTIONS //
 
 int		scan(t_table *table);
@@ -109,7 +105,7 @@ void	destroy_mutex(t_table *table);
 // DINNER FUNCTIONS //
 
 void	one_dinner(t_philo *ph);
-void	*dinner(void *ph);
+void	*dinner(void *t);
 void	dreams(t_philo *ph);
 void	eat(t_philo *ph);
 void	think(t_philo *ph);

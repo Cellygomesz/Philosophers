@@ -6,7 +6,7 @@
 #    By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/12 10:52:11 by mgomes-s          #+#    #+#              #
-#    Updated: 2025/04/01 07:19:37 by mgomes-s         ###   ########.fr        #
+#    Updated: 2025/04/01 12:15:18 by mgomes-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -g -Wall -Wextra -Werror -pthread -fsanitize=thread
+CFLAGS = -g -Wall -Wextra -Werror -pthread
 
-SRCS = main.c routine.c scanner.c valid.c init.c errors.c dinner.c aux.c aux2.c
+SRCS = main.c routine.c scanner.c valid.c init.c errors.c dinner.c aux.c \
+aux2.c aux3.c
 
 OBJS = $(SRCS:.c=.o)
 

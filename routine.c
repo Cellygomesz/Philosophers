@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 07:14:04 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 10:02:29 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:20:05 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,6 @@ void	print(int action, t_philo *ph)
 		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
 	pthread_mutex_unlock(&ph->table->print);
 	pthread_mutex_unlock(&ph->table->dead);
-}
-
-void	eat(t_philo *ph)
-{
-	if (ph->id % 2 && ph->index != ph->table->n_philo)
-	{
-		print(EAT, ph);
-		ph->ate += 1;
-		smart_sleep(ph->table->time_eat, ph);
-		pthread_mutex_lock(&ph->table->l_meal);
-		ph->last_meal = time_now(ph);
-		pthread_mutex_unlock(&ph->table->l_meal);
-		pthread_mutex_unlock(&ph->table->m_fork[ph->l_fork]);
-		pthread_mutex_unlock(&ph->table->m_fork[ph->r_fork]);
-	}
-	else
-	{
-		print(EAT, ph);
-		ph->ate += 1;
-		smart_sleep(ph->table->time_eat, ph);
-		pthread_mutex_lock(&ph->table->l_meal);
-		ph->last_meal = time_now(ph);
-		pthread_mutex_unlock(&ph->table->l_meal);
-		pthread_mutex_unlock(&ph->table->m_fork[ph->r_fork]);
-		pthread_mutex_unlock(&ph->table->m_fork[ph->l_fork]);
-	}
 }
 
 void	think(t_philo *ph)

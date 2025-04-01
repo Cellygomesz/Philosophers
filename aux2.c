@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 07:17:02 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 08:04:56 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 10:41:52 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ long	ft_atol(const char *str)
 	while (str[i] >= 48 && str[i] <= 57)
 		num = num * 10 + (str[i++] - '0');
 	num = num * minus;
-	if (num >= -2147483648 && num <= 2147483647)
+	if (num >= (long)-2147483648 && num <= (long)2147483647)
 		return (num);
 	return (0);
 }
@@ -59,5 +59,7 @@ void	smart_sleep(long duration, t_philo *ph)
 
 	start_time = time_now(ph);
 	while (time_now(ph) - start_time < duration)
+	{
 		usleep(100);
+	}
 }

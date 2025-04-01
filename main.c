@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:38:23 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 08:06:44 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:43:37 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	destroy_mutex(t_table *table)
 	i = -1;
 	while (++i < table->n_philo)
 		pthread_mutex_destroy(&table->m_fork[i]);
-	pthread_mutex_destroy(&table->creed);
 	pthread_mutex_destroy(&table->dead);
 	pthread_mutex_destroy(&table->l_meal);
 	pthread_mutex_destroy(&table->print);
+	pthread_mutex_destroy(&table->food);
 	free(table->m_fork);
 }
 
@@ -43,5 +43,6 @@ int	main(int ac, char **av)
 	create_fork(&table);
 	init_philo(&table, table.n_philo);
 	finish_philo(&table, table.n_philo);
+	destroy_mutex(&table);
 	return (0);
 }
