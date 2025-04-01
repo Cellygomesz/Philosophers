@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 07:12:24 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 07:12:55 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:19:28 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_menu(t_philo *ph)
 {
 	if (ph->id % 2 != 0)
-		usleep(500);
+		usleep(100);
 }
 
 void	take_fork(t_philo *ph)

@@ -6,7 +6,7 @@
 /*   By: mgomes-s <mgomes-s@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 07:15:42 by mgomes-s          #+#    #+#             */
-/*   Updated: 2025/04/01 12:23:59 by mgomes-s         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:11:02 by mgomes-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	check_status(t_table *table, int i)
 	}
 	pthread_mutex_unlock(&table->food);
 	pthread_mutex_lock(&table->l_meal);
-	if (time_now(table->ph) - table->ph[i].last_meal >= table->time_die)
+	if (time_now(table->ph) - table->ph[i].last_meal > table->time_die)
 	{
 		pthread_mutex_lock(&table->dead);
 		table->died = 1;
